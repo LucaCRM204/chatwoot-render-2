@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 set -o errexit
 
-echo "Usando Node.js 18 (preinstalado en Render)"
-node -v
-yarn -v || npm install -g yarn
+echo "Instalando dependencias Ruby..."
+bundle install
 
-echo "Instalando dependencias..."
-yarn install
+echo "Instalando dependencias Node (si aplica)..."
+yarn install || echo "No hay package.json, se omite yarn."
 
-echo "Compilando frontend..."
-yarn build
+echo "Precompilando assets..."
+bundle exec rails assets:precompile
 
 echo "Listo para iniciar"
