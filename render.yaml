@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: chatwoot
+    env: ruby
+    buildCommand: "./bin/setup"
+    startCommand: "bundle exec rails s -p 3000"
+    envVars:
+      - key: RAILS_ENV
+        value: production
